@@ -15,7 +15,7 @@ public class BeginningScreen extends Screen
 	BufferedImage startS, startUS, settingsS, settingsUS;
 	boolean stSelected = false;
 	boolean seSelected = false;
-	String version ="1.1.2";
+	String version ="1.1.4";
 	String intro1 = "Welcome to my game made for Ludum Dare 28!";
 	String intro2 = "The object of this game is to make you way though the maze, retrive the key and bring";
 	String intro3 = "the key back to the starting area. Beware! There are gaurds thoughout the maze and if";
