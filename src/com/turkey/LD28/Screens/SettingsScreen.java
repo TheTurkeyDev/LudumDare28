@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.turkey.LD28.Game.GameSettings;
+
 public class SettingsScreen extends Screen
 {
 	int speed = 1;
@@ -85,6 +87,7 @@ public class SettingsScreen extends Screen
 		}
 		if ((x > 300) && (x < 500) && (y > 450) && (y < 490))
 		{
+			GameSettings.getSettings().setSpeed(speed);
 			ScreenManager.manager.setCurrentScreen("BeginningScreen");
 		}
 	}

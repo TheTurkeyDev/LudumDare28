@@ -1,6 +1,6 @@
 package com.turkey.LD28.Player;
 
-import com.turkey.LD28.Screens.MainScreen;
+import com.turkey.LD28.Game.Game;
 import com.turkey.LD28.Util.Direction;
 import com.turkey.LD28.Util.Entity;
 import com.turkey.LD28.Util.Location;
@@ -33,9 +33,9 @@ public class Player
   private BufferedImage west;
   private Direction facing = Direction.North;
   private Maze map;
-  private MainScreen main;
+  private Game game;
 
-  public Player(Maze maze, MainScreen screen, int moveSpeed)
+  public Player(Maze maze, Game g, int moveSpeed)
   {
     try
     {
@@ -48,7 +48,7 @@ public class Player
     catch (IOException e) {
       e.printStackTrace();
     }
-    main = screen;
+    game = g;
     speed = moveSpeed;
   }
 
@@ -201,7 +201,7 @@ public class Player
         }
 
         ent.fire();
-        MainScreen.addEntity(ent);
+        game.addEntity(ent);
         shoot = true;
       }
     }
@@ -215,7 +215,7 @@ public class Player
     {
       map.keyDropped();
       key = false;
-      main.NextRound();
+      game.NextRound();
     }
   }
 
@@ -227,7 +227,7 @@ public class Player
     return yPlayerCord;
   }
 
-  public Location getLocation() {
+  public Location getAbsoluteLocation() {
     return new Location(xPlayerCord, yPlayerCord);
   }
 

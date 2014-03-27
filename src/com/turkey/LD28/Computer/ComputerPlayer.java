@@ -308,7 +308,7 @@ public class ComputerPlayer
 		return false;
 	}
 
-	public Location getLocation()
+	public Location getAbsoluteLocation()
 	{
 		return new Location(xCompCord, yCompCord);
 	}

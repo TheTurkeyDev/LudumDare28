@@ -1,5 +1,6 @@
 package com.turkey.LD28;
 
+import com.turkey.LD28.Game.GameSettings;
 import com.turkey.LD28.Screens.BeginningScreen;
 import com.turkey.LD28.Screens.ScreenManager;
 import java.awt.Component;
@@ -16,6 +17,7 @@ public class Application extends Component
   {
     ScreenManager.manager.newScreen(new BeginningScreen("BeginningScreen"));
     ScreenManager.manager.setCurrentScreen("BeginningScreen");
+    new GameSettings();
     running = true;
     thread = new Thread(this, "Display");
     thread.start();

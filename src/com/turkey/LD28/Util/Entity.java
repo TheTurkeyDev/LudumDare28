@@ -1,7 +1,7 @@
 package com.turkey.LD28.Util;
 
 import com.turkey.LD28.Computer.ComputerPlayer;
-import com.turkey.LD28.Screens.MainScreen;
+import com.turkey.LD28.Game.Game;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -25,11 +25,7 @@ public class Entity
 		try
 		{
 			bullet = ImageIO.read(getClass().getResource("/bulletEntity.png"));
-		} catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (IOException e){e.printStackTrace();}
 	}
 
 	public void setVelocity(int xVel, int yVel)
@@ -45,20 +41,21 @@ public class Entity
 
 	public void updateLocation()
 	{
+		Game game = Game.instance();
 		if (!isMoving)
 			return;
 		x += xVelocity;
 		y += yVelocity;
 		if (map.isWall(x, y, 10))
 		{
-			MainScreen.removeEntity(this);
+			game.removeEntity(this);
 		}
-		for (ComputerPlayer cpu : MainScreen.getCPUs())
+		for (ComputerPlayer cpu : game.getCPUs())
 		{
-			if ((cpu.getLocation().getX() / 40 == x / 40) && (cpu.getLocation().getY() / 40 == y / 40))
+			if ((cpu.getAbsoluteLocation().getX() / 40 == x / 40) && (cpu.getAbsoluteLocation().getY() / 40 == y / 40))
 			{
-				MainScreen.removeEntity(this);
-				MainScreen.removeCPU(cpu);
+				game.removeEntity(this);
+				game.removeCPU(cpu);
 				return;
 			}
 		}

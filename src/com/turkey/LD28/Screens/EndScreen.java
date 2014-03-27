@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import com.turkey.LD28.Game.Game;
+
 public class EndScreen extends Screen
 {
   BufferedImage restartS;
@@ -18,10 +20,10 @@ public class EndScreen extends Screen
   String intro1 = "You Were Found!";
   String intro3 = "Play again?";
 
-  public EndScreen(String sName, int endround)
+  public EndScreen(String sName)
   {
     super(sName);
-    rounds = endround;
+    rounds = Game.instance().getRound();
     try
     {
       restartS = ImageIO.read(getClass().getResource("/RestartSelectedButton.png"));
