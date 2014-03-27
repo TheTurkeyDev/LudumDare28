@@ -301,8 +301,10 @@ public class ComputerPlayer
 
 	private boolean isCentered()
 	{
-		if ((xCompCord % 40 == 10) && (yCompCord % 40 == 10))
+		if ((xCompCord % 40 > 5 && xCompCord % 40 < 15) && (yCompCord % 40 > 5 && yCompCord % 40 < 15))
 		{
+			xCompCord = xCompCord + (10 -(xCompCord % 40));
+			yCompCord = yCompCord + (10 -(yCompCord % 40));
 			return true;
 		}
 		return false;
