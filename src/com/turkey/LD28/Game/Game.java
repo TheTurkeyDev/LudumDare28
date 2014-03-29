@@ -16,6 +16,7 @@ public class Game
 	private GameSettings settings;
 	private static Game game;
 	private int round = 1;
+	private boolean paused = false;
 
 	private static ArrayList<ComputerPlayer> cpus = new ArrayList<ComputerPlayer>();
 	private static ArrayList<Entity> entities = new ArrayList<Entity>();
@@ -154,5 +155,37 @@ public class Game
 	public int getRound()
 	{
 		return round;
+	}
+	
+	public void pause()
+	{
+		paused = true;
+		player.stop();
+		for(ComputerPlayer cpu: cpus)
+		{
+			cpu.stop();
+		}
+		for(Entity ent: entities)
+		{
+			ent.stop();
+		}
+	}
+	public void unpause()
+	{
+		paused = false;
+		player.start();
+		for(ComputerPlayer cpu: cpus)
+		{
+			cpu.start();
+		}
+		for(Entity ent: entities)
+		{
+			ent.fire();
+		}
+	}
+	
+	public boolean isPaused()
+	{
+		return paused;
 	}
 }

@@ -38,6 +38,10 @@ public class Entity
 	{
 		isMoving = true;
 	}
+	public void stop()
+	{
+		isMoving = false;
+	}
 
 	public void updateLocation()
 	{

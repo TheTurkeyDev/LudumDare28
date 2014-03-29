@@ -2,6 +2,7 @@ package com.turkey.LD28.Screens;
 
 import com.turkey.LD28.Computer.ComputerPlayer;
 import com.turkey.LD28.Game.Game;
+import com.turkey.LD28.Screens.SubScreens.PauseSubScreen;
 import com.turkey.LD28.Util.Entity;
 import java.awt.Graphics;
 
@@ -26,6 +27,7 @@ public class MainScreen extends Screen
 		{
 			ent.paint(g);
 		}
+		super.paint(g);
 	}
 
 	public void update()
@@ -47,15 +49,29 @@ public class MainScreen extends Screen
 		game.clearMaze();
 	}
 
-	public void OnKeyEvent(String Input, Boolean pressed)
+	public void OnKeyEvent(String input, Boolean pressed)
 	{
 		if (pressed.booleanValue())
 		{
-			game.getPlayer().onPress(Input);
+			game.getPlayer().onPress(input);
 		}
 		else
 		{
-			game.getPlayer().onDePress(Input);
+			game.getPlayer().onDePress(input);
+		}
+		if(input.equalsIgnoreCase("esc"))
+		{
+			PauseSubScreen pss = new PauseSubScreen(100, 100, 600, 400, "pause");
+			if(game.isPaused())
+			{
+				game.unpause();
+				toggleSubScreen(pss);
+			}
+			else
+			{
+				game.pause();
+				toggleSubScreen(pss);
+			}
 		}
 	}
 
@@ -66,7 +82,7 @@ public class MainScreen extends Screen
 	public void onMouseMove(int x, int y)
 	{
 	}
-	
+
 	public void endGame()
 	{
 		game.getPlayer().stop();

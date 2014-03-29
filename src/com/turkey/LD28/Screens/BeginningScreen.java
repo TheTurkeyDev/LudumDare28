@@ -7,6 +7,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import com.turkey.LD28.Game.GameSettings;
+
 public class BeginningScreen extends Screen
 {
 	Font font1 = new Font("Serif", 1, 32);
@@ -15,7 +17,6 @@ public class BeginningScreen extends Screen
 	BufferedImage startS, startUS, settingsS, settingsUS;
 	boolean stSelected = false;
 	boolean seSelected = false;
-	String version ="1.1.4";
 	String intro1 = "Welcome to my game made for Ludum Dare 28!";
 	String intro2 = "The object of this game is to make you way though the maze, retrive the key and bring";
 	String intro3 = "the key back to the starting area. Beware! There are gaurds thoughout the maze and if";
@@ -54,7 +55,7 @@ public class BeginningScreen extends Screen
 		g.drawString(intro5, 25, 225);
 		g.drawString(intro6, 25, 250);
 		g.setFont(font3);
-		g.drawString("Version : " + version, 0,590);
+		g.drawString("Version : " + GameSettings.version(), 0,590);
 		if (stSelected)
 		{
 			g.drawImage(startS, 300, 450, 200, 40, null);
