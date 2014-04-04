@@ -265,4 +265,10 @@ public class Player
 	{
 		speed = s;
 	}
+
+	public void repsawn()
+	{
+		xPlayerCord = 50;
+		yPlayerCord = 50;
+	}
 }

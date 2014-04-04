@@ -21,6 +21,9 @@ public class SettingsScreen extends Screen
 	public SettingsScreen(String name)
 	{
 		super(name);
+		try{
+		speed = GameSettings.getSettings().getSpeed();
+		}catch(NullPointerException e){speed = 1;}
 		try
 		{
 			backS = ImageIO.read(getClass().getResource("/BackSelectedButton.png"));

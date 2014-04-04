@@ -15,7 +15,7 @@ public class Game
 	private Player player;
 	private GameSettings settings;
 	private static Game game;
-	private int round = 1;
+	private int round = 0;
 	private boolean paused = false;
 
 	private static ArrayList<ComputerPlayer> cpus = new ArrayList<ComputerPlayer>();
@@ -117,6 +117,7 @@ public class Game
 
 	public void NextRound()
 	{
+		round += 1;
 		for (ComputerPlayer cpu : cpus)
 		{
 			removeCPU(cpu);
@@ -136,7 +137,6 @@ public class Game
 			ComputerPlayer cpu = new ComputerPlayer(player, maze, loc, settings.getSpeed());
 			cpus.add(cpu);
 		}
-		round += 1;
 	}
 
 	public Maze getMaze()
@@ -196,5 +196,13 @@ public class Game
 		{
 			cpu.changeSpeed(GameSettings.getSettings().getSpeed());
 		}
+	}
+	
+	public void restart()
+	{
+		clearMaze();
+		player.repsawn();
+		round = 0;
+		NextRound();
 	}
 }

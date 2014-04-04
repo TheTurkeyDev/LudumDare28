@@ -6,13 +6,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.turkey.LD28.Game.Game;
 import com.turkey.LD28.Screens.Screen;
+import com.turkey.LD28.Screens.ScreenManager;
 
 public class PauseSubScreen extends SubScreen
 {
-	BufferedImage pauseScreen, settingsS, settingsUS;
+	BufferedImage pauseScreen, settingsS, settingsUS, backS, backUS, restartS, restartUS, mainmenuS, mainmenuUS ;
 
-	boolean seSelected = false;
+	boolean seSelected = false, bSelected = false, rSelected = false, rtmSelected = false;
 
 	public PauseSubScreen(int xloc, int yloc, int w, int h, String n, Screen parent)
 	{
@@ -22,6 +24,12 @@ public class PauseSubScreen extends SubScreen
 			pauseScreen = ImageIO.read(getClass().getResource("/PauseScreen.png"));
 			settingsS = ImageIO.read(getClass().getResource("/SettingsSelectedButton.png"));
 			settingsUS = ImageIO.read(getClass().getResource("/SettingsUnSelectedButton.png"));
+			backS = ImageIO.read(getClass().getResource("/BackSelectedButton.png"));
+			backUS = ImageIO.read(getClass().getResource("/BackUnSelectedButton.png"));
+			restartS = ImageIO.read(getClass().getResource("/RestartSelectedButton.png"));
+			restartUS = ImageIO.read(getClass().getResource("/RestartUnSelectedButton.png"));
+			mainmenuS = ImageIO.read(getClass().getResource("/RTMSelectedButton.png"));
+			mainmenuUS = ImageIO.read(getClass().getResource("/RTMUnSelectedButton.png"));
 		} catch (IOException e){e.printStackTrace();}
 	}
 
@@ -35,6 +43,33 @@ public class PauseSubScreen extends SubScreen
 		else
 		{
 			g.drawImage(settingsUS, 300, 250, 200, 40, null);
+		}
+
+		if (rSelected)
+		{
+			g.drawImage(restartS, 300, 300, 200, 40, null);
+		}
+		else
+		{
+			g.drawImage(restartUS, 300, 300, 200, 40, null);
+		}
+
+		if (bSelected)
+		{
+			g.drawImage(backS, 300, 350, 200, 40, null);
+		}
+		else
+		{
+			g.drawImage(backUS, 300, 350, 200, 40, null);
+		}
+		
+		if (rtmSelected)
+		{
+			g.drawImage(mainmenuS, 300, 400, 200, 40, null);
+		}
+		else
+		{
+			g.drawImage(mainmenuUS, 300, 400, 200, 40, null);
 		}
 
 	}
@@ -52,6 +87,23 @@ public class PauseSubScreen extends SubScreen
 			parent.removeSubScreen(this);
 			parent.displaySubScreen(sss);
 		}
+
+		if(x > 300 && x < 500 && y > 300 && y < 340)
+		{
+			parent.removeAllSubScreens();
+			Game.instance().restart();
+		}
+
+		if(x > 300 && x < 500 && y > 350 && y < 390)
+		{
+			parent.removeAllSubScreens();
+			Game.instance().unpause();
+		}
+		
+		if(x > 300 && x < 500 && y > 400 && y < 440)
+		{
+			ScreenManager.manager.setCurrentScreen("BeginningScreen");
+		}
 	}
 
 	public void onMouseMove(int x, int y)
@@ -60,6 +112,21 @@ public class PauseSubScreen extends SubScreen
 			seSelected = true;
 		else
 			seSelected = false;
+
+		if(x > 300 && x < 500 && y > 300 && y < 340)
+			rSelected = true;
+		else
+			rSelected = false;
+		
+		if(x > 300 && x < 500 && y > 350 && y < 390)
+			bSelected = true;
+		else
+			bSelected = false;
+		
+		if(x > 300 && x < 500 && y > 400 && y < 440)
+			rtmSelected = true;
+		else
+			rtmSelected = false;
 	}
 
 }

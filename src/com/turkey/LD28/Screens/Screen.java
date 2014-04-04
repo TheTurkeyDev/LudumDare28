@@ -2,6 +2,7 @@ package com.turkey.LD28.Screens;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 import com.turkey.LD28.Screens.SubScreens.SettingsSubScreen;
 import com.turkey.LD28.Screens.SubScreens.SubScreen;
@@ -39,8 +40,10 @@ public class Screen
 
 	public void onClick(int x, int y)
 	{
-		for(SubScreen ss: subScreens)
-			ss.onClick(x, y);
+		try{
+			for(SubScreen ss: subScreens)
+				ss.onClick(x, y);
+		}catch(ConcurrentModificationException e){}
 	}
 
 	public void onMouseMove(int x, int y)
