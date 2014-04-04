@@ -12,252 +12,257 @@ import javax.imageio.ImageIO;
 
 public class Player
 {
-  private boolean canMove = false;
-  private int xPlayerCord = 50;
-  private int yPlayerCord = 50;
-  private boolean w = false;
-  private boolean a = false;
-  private boolean s = false;
-  private boolean d = false;
-  private boolean space = false;
-  private boolean shoot = false;
-  private boolean key = false;
-  
-  private int speed;
+	private boolean canMove = false;
+	private int xPlayerCord = 50;
+	private int yPlayerCord = 50;
+	private boolean w = false;
+	private boolean a = false;
+	private boolean s = false;
+	private boolean d = false;
+	private boolean space = false;
+	private boolean shoot = false;
+	private boolean key = false;
 
-  private int playerMouseXCord = 0;
-  private int playerMouseYCord = 0;
-  private BufferedImage north;
-  private BufferedImage east;
-  private BufferedImage south;
-  private BufferedImage west;
-  private Direction facing = Direction.North;
-  private Maze map;
-  private Game game;
+	private int speed;
 
-  public Player(Maze maze, Game g, int moveSpeed)
-  {
-    try
-    {
-      map = maze;
-      north = ImageIO.read(getClass().getResource("/NinjaNorth.png"));
-      east = ImageIO.read(getClass().getResource("/NinjaEast.png"));
-      west = ImageIO.read(getClass().getResource("/NinjaWest.png"));
-      south = ImageIO.read(getClass().getResource("/NinjaSouth.png"));
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-    game = g;
-    speed = moveSpeed;
-  }
+	private int playerMouseXCord = 0;
+	private int playerMouseYCord = 0;
+	private BufferedImage north;
+	private BufferedImage east;
+	private BufferedImage south;
+	private BufferedImage west;
+	private Direction facing = Direction.North;
+	private Maze map;
+	private Game game;
 
-  public void paint(Graphics g)
-  {
-    switch (facing)
-    {
-    case North:
-      g.drawImage(north, xPlayerCord, yPlayerCord, 16, 16, null);
-      break;
-    case South:
-      g.drawImage(south, xPlayerCord, yPlayerCord, 16, 16, null);
-      break;
-    case West:
-      g.drawImage(west, xPlayerCord, yPlayerCord, 16, 16, null);
-      break;
-    case East:
-      g.drawImage(east, xPlayerCord, yPlayerCord, 16, 16, null);
-    }
-  }
+	public Player(Maze maze, Game g, int moveSpeed)
+	{
+		try
+		{
+			map = maze;
+			north = ImageIO.read(getClass().getResource("/NinjaNorth.png"));
+			east = ImageIO.read(getClass().getResource("/NinjaEast.png"));
+			west = ImageIO.read(getClass().getResource("/NinjaWest.png"));
+			south = ImageIO.read(getClass().getResource("/NinjaSouth.png"));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		game = g;
+		speed = moveSpeed;
+	}
 
-  public double getPlayerXCord()
-  {
-    return xPlayerCord;
-  }
+	public void paint(Graphics g)
+	{
+		switch (facing)
+		{
+			case North:
+				g.drawImage(north, xPlayerCord, yPlayerCord, 16, 16, null);
+				break;
+			case South:
+				g.drawImage(south, xPlayerCord, yPlayerCord, 16, 16, null);
+				break;
+			case West:
+				g.drawImage(west, xPlayerCord, yPlayerCord, 16, 16, null);
+				break;
+			case East:
+				g.drawImage(east, xPlayerCord, yPlayerCord, 16, 16, null);
+		}
+	}
 
-  public double getPlayerYCord() {
-    return yPlayerCord;
-  }
+	public double getPlayerXCord()
+	{
+		return xPlayerCord;
+	}
 
-  public void onPress(String key)
-  {
-    if (key.equalsIgnoreCase("w"))
-    {
-      w = true;
-    }
-    if (key.equalsIgnoreCase("a"))
-    {
-      a = true;
-    }
-    if (key.equalsIgnoreCase("s"))
-    {
-      s = true;
-    }
-    if (key.equalsIgnoreCase("d"))
-    {
-      d = true;
-    }
-    if (key.equalsIgnoreCase(" "))
-    {
-      space = true;
-    }
-  }
+	public double getPlayerYCord() {
+		return yPlayerCord;
+	}
 
-  public void onDePress(String key) {
-    if (key.equalsIgnoreCase("w"))
-    {
-      w = false;
-    }
-    if (key.equalsIgnoreCase("a"))
-    {
-      a = false;
-    }
-    if (key.equalsIgnoreCase("s"))
-    {
-      s = false;
-    }
-    if (key.equalsIgnoreCase("d"))
-    {
-      d = false;
-    }
-    if (key.equalsIgnoreCase(" "))
-    {
-      space = false;
-    }
-  }
+	public void onPress(String key)
+	{
+		if (key.equalsIgnoreCase("w"))
+		{
+			w = true;
+		}
+		if (key.equalsIgnoreCase("a"))
+		{
+			a = true;
+		}
+		if (key.equalsIgnoreCase("s"))
+		{
+			s = true;
+		}
+		if (key.equalsIgnoreCase("d"))
+		{
+			d = true;
+		}
+		if (key.equalsIgnoreCase(" "))
+		{
+			space = true;
+		}
+	}
 
-  public void updatePlayerPos() {
-    if (!canMove)
-      return;
-    if (w)
-    {
-      yPlayerCord -= speed;
-      if (map.isWall(xPlayerCord, yPlayerCord, 16))
-      {
-        yPlayerCord += speed;
-      }
-      else
-      {
-        facing = Direction.North;
-      }
-    }
-    if (a)
-    {
-      xPlayerCord -= speed;
-      if (map.isWall(xPlayerCord, yPlayerCord, 16))
-      {
-        xPlayerCord += speed;
-      }
-      else
-      {
-        facing = Direction.West;
-      }
-    }
-    if (s)
-    {
-      yPlayerCord += speed;
-      if (map.isWall(xPlayerCord, yPlayerCord, 16))
-      {
-        yPlayerCord -= speed;
-      }
-      else
-      {
-        facing = Direction.South;
-      }
-    }
-    if (d)
-    {
-      xPlayerCord += speed;
-      if (map.isWall(xPlayerCord, yPlayerCord, 16))
-      {
-        xPlayerCord -= speed;
-      }
-      else
-      {
-        facing = Direction.East;
-      }
-    }
-    if (space)
-    {
-      if (!shoot)
-      {
-        Entity ent = new Entity(new Location(xPlayerCord, yPlayerCord), map);
-        switch (facing)
-        {
-        case South:
-          ent.setVelocity(0, 5);
-          break;
-        case North:
-          ent.setVelocity(0, -5);
-          break;
-        case East:
-          ent.setVelocity(0, 5);
-          break;
-        case West:
-          ent.setVelocity(-5, 0);
-          break;
-        default:
-          ent.setVelocity(0, 0);
-        }
+	public void onDePress(String key) {
+		if (key.equalsIgnoreCase("w"))
+		{
+			w = false;
+		}
+		if (key.equalsIgnoreCase("a"))
+		{
+			a = false;
+		}
+		if (key.equalsIgnoreCase("s"))
+		{
+			s = false;
+		}
+		if (key.equalsIgnoreCase("d"))
+		{
+			d = false;
+		}
+		if (key.equalsIgnoreCase(" "))
+		{
+			space = false;
+		}
+	}
 
-        ent.fire();
-        game.addEntity(ent);
-        shoot = true;
-      }
-    }
+	public void updatePlayerPos() {
+		if (!canMove)
+			return;
+		if (w)
+		{
+			yPlayerCord -= speed;
+			if (map.isWall(xPlayerCord, yPlayerCord, 16))
+			{
+				yPlayerCord += speed;
+			}
+			else
+			{
+				facing = Direction.North;
+			}
+		}
+		if (a)
+		{
+			xPlayerCord -= speed;
+			if (map.isWall(xPlayerCord, yPlayerCord, 16))
+			{
+				xPlayerCord += speed;
+			}
+			else
+			{
+				facing = Direction.West;
+			}
+		}
+		if (s)
+		{
+			yPlayerCord += speed;
+			if (map.isWall(xPlayerCord, yPlayerCord, 16))
+			{
+				yPlayerCord -= speed;
+			}
+			else
+			{
+				facing = Direction.South;
+			}
+		}
+		if (d)
+		{
+			xPlayerCord += speed;
+			if (map.isWall(xPlayerCord, yPlayerCord, 16))
+			{
+				xPlayerCord -= speed;
+			}
+			else
+			{
+				facing = Direction.East;
+			}
+		}
+		if (space)
+		{
+			if (!shoot)
+			{
+				Entity ent = new Entity(new Location(xPlayerCord, yPlayerCord), map);
+				switch (facing)
+				{
+					case South:
+						ent.setVelocity(0, 5);
+						break;
+					case North:
+						ent.setVelocity(0, -5);
+						break;
+					case East:
+						ent.setVelocity(0, 5);
+						break;
+					case West:
+						ent.setVelocity(-5, 0);
+						break;
+					default:
+						ent.setVelocity(0, 0);
+				}
 
-    if ((xPlayerCord > 720) && (yPlayerCord > 520) && (!key))
-    {
-      map.keyPickedUp();
-      key = true;
-    }
-    if ((xPlayerCord < 80) && (yPlayerCord < 80) && (key))
-    {
-      map.keyDropped();
-      key = false;
-      game.NextRound();
-    }
-  }
+				ent.fire();
+				game.addEntity(ent);
+				shoot = true;
+			}
+		}
 
-  public int getX() {
-    return xPlayerCord;
-  }
+		if ((xPlayerCord > 720) && (yPlayerCord > 520) && (!key))
+		{
+			map.keyPickedUp();
+			key = true;
+		}
+		if ((xPlayerCord < 80) && (yPlayerCord < 80) && (key))
+		{
+			map.keyDropped();
+			key = false;
+			game.NextRound();
+		}
+	}
 
-  public int getY() {
-    return yPlayerCord;
-  }
+	public int getX() {
+		return xPlayerCord;
+	}
 
-  public Location getAbsoluteLocation() {
-    return new Location(xPlayerCord, yPlayerCord);
-  }
+	public int getY() {
+		return yPlayerCord;
+	}
 
-  public void setMousePos(int x, int y)
-  {
-    playerMouseXCord = x;
-    playerMouseYCord = y;
-  }
+	public Location getAbsoluteLocation() {
+		return new Location(xPlayerCord, yPlayerCord);
+	}
 
-  public int getMouseX()
-  {
-    return playerMouseXCord;
-  }
+	public void setMousePos(int x, int y)
+	{
+		playerMouseXCord = x;
+		playerMouseYCord = y;
+	}
 
-  public int getMouseY() {
-    return playerMouseYCord;
-  }
+	public int getMouseX()
+	{
+		return playerMouseXCord;
+	}
 
-  public void start()
-  {
-    canMove = true;
-  }
+	public int getMouseY() {
+		return playerMouseYCord;
+	}
 
-  public void stop() {
-    canMove = false;
-  }
+	public void start()
+	{
+		canMove = true;
+	}
 
-  public void reset() {
-    xPlayerCord = 50;
-    yPlayerCord = 50;
-    shoot = false;
-  }
+	public void stop() {
+		canMove = false;
+	}
+
+	public void reset() {
+		xPlayerCord = 50;
+		yPlayerCord = 50;
+		shoot = false;
+	}
+
+	public void changeSpeed(int s)
+	{
+		speed = s;
+	}
 }

@@ -79,7 +79,7 @@ public class BeginningScreen extends Screen
 	{
 		if ((x > 300) && (x < 500) && (y > 450) && (y < 490))
 		{
-			ScreenManager.manager.newScreen(new MainScreen("MainScreen" , settings.getSpeed()));
+			ScreenManager.manager.newScreen(new MainScreen("MainScreen"));
 			ScreenManager.manager.setCurrentScreen("MainScreen");
 		}
 		if ((x > 300) && (x < 500) && (y > 500) && (y < 540))

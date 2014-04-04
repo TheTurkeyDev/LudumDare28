@@ -5,11 +5,12 @@ import com.turkey.LD28.Game.Game;
 import com.turkey.LD28.Screens.SubScreens.PauseSubScreen;
 import com.turkey.LD28.Util.Entity;
 import java.awt.Graphics;
+import java.util.ConcurrentModificationException;
 
 public class MainScreen extends Screen
 {
 	Game game;
-	public MainScreen(String sName, int movementSpeed)
+	public MainScreen(String sName)
 	{
 		super(sName);
 		game = new Game();
@@ -19,13 +20,18 @@ public class MainScreen extends Screen
 	{
 		game.getMaze().paint(g);
 		game.getPlayer().paint(g);
-		for (ComputerPlayer cpu : game.getCPUs())
+		try{
+			for (ComputerPlayer cpu : game.getCPUs())
+			{
+				cpu.paint(g);
+			}
+			for (Entity ent : game.getEntities())
+			{
+				ent.paint(g);
+			}
+		}catch(ConcurrentModificationException e)
 		{
-			cpu.paint(g);
-		}
-		for (Entity ent : game.getEntities())
-		{
-			ent.paint(g);
+			System.out.println("Error CME has occured on painting");
 		}
 		super.paint(g);
 	}
@@ -47,6 +53,7 @@ public class MainScreen extends Screen
 			ent.updateLocation();
 		}
 		game.clearMaze();
+		super.update();
 	}
 
 	public void OnKeyEvent(String input, Boolean pressed)
@@ -61,26 +68,29 @@ public class MainScreen extends Screen
 		}
 		if(input.equalsIgnoreCase("esc"))
 		{
-			PauseSubScreen pss = new PauseSubScreen(100, 100, 600, 400, "pause");
+			PauseSubScreen pss = new PauseSubScreen(100, 100, 600, 400, "pause", this);
 			if(game.isPaused())
 			{
 				game.unpause();
-				toggleSubScreen(pss);
+				removeAllSubScreens();
 			}
 			else
 			{
 				game.pause();
-				toggleSubScreen(pss);
+				displaySubScreen(pss);
 			}
 		}
+		super.OnKeyEvent(input, pressed);
 	}
 
 	public void onClick(int x, int y)
 	{
+		super.onClick(x, y);
 	}
 
 	public void onMouseMove(int x, int y)
 	{
+		super.onMouseMove(x, y);
 	}
 
 	public void endGame()

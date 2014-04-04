@@ -327,4 +327,9 @@ public class ComputerPlayer
 	public boolean isFacing(Direction dir) {
 		return LastDir == dir;
 	}
+
+	public void changeSpeed(int s)
+	{
+		speed = s;
+	}
 }

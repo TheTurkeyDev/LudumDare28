@@ -2,7 +2,7 @@ package com.turkey.LD28.Game;
 
 public class GameSettings
 {
-	private static String version = "1.2.0";
+	private static String version = "1.2.1";
 	private int speed = 1;
 	private static GameSettings gameSettings;
 	

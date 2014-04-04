@@ -188,4 +188,13 @@ public class Game
 	{
 		return paused;
 	}
+	
+	public void updateSettings()
+	{
+		player.changeSpeed(GameSettings.getSettings().getSpeed());
+		for(ComputerPlayer cpu: cpus)
+		{
+			cpu.changeSpeed(GameSettings.getSettings().getSpeed());
+		}
+	}
 }

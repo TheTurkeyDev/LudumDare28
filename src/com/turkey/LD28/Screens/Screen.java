@@ -3,6 +3,7 @@ package com.turkey.LD28.Screens;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
+import com.turkey.LD28.Screens.SubScreens.SettingsSubScreen;
 import com.turkey.LD28.Screens.SubScreens.SubScreen;
 
 public class Screen
@@ -47,34 +48,33 @@ public class Screen
 		for(SubScreen ss: subScreens)
 			ss.onMouseMove(x, y);
 	}
-	
+
 	public void displaySubScreen(SubScreen ss)
 	{
 		subScreens.add(ss);
 	}
-	
+
 	public void removeSubScreen(SubScreen ss)
 	{
 		subScreens.remove(ss);
+		if(ss.getName().equalsIgnoreCase("settings"))
+		{
+			SettingsSubScreen sss = (SettingsSubScreen) ss;
+			sss.saveSettings();
+		}
+
 	}
-	
-	public boolean toggleSubScreen(SubScreen ss)
+
+	public void removeAllSubScreens()
 	{
-		SubScreen same = null;
-		for(SubScreen sub: subScreens)
-			if(sub.getName().equalsIgnoreCase(ss.getName()))
-				same = sub;
-		if(same != null)
+		for(SubScreen ss: subScreens)
 		{
-			System.out.println("here");
-			subScreens.remove(same);
-			return false;
+			if(ss.getName().equalsIgnoreCase("settings"))
+			{
+				SettingsSubScreen sss = (SettingsSubScreen) ss;
+				sss.saveSettings();
+			}
 		}
-		else
-		{
-			System.out.println("q");
-			subScreens.add(ss);
-			return true;
-		}
+		subScreens.clear();
 	}
 }
