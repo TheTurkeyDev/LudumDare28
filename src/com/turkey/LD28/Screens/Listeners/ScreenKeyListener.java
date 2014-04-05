@@ -1,11 +1,11 @@
 package com.turkey.LD28.Screens.Listeners;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import com.turkey.LD28.Screens.ScreenManager;
 
-public class ScreenKeyListener extends KeyAdapter
+public class ScreenKeyListener implements KeyListener
 {
 	String key;
 

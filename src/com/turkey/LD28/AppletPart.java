@@ -1,43 +1,29 @@
 package com.turkey.LD28;
 
-import com.turkey.LD28.Screens.Listeners.ScreenKeyListener;
-import com.turkey.LD28.Screens.Listeners.ScreenMouseListener;
-import com.turkey.LD28.Screens.Listeners.ScreenMouseMotionListener;
 import javax.swing.JApplet;
 
 public class AppletPart extends JApplet
 {
-  private static final long serialVersionUID = 1L;
-  private static Application app;
+	private static final long serialVersionUID = 1L;
+	private Application app = new Application();
 
-  public void init()
-  {
-    app = new Application();
-    super.setSize(800, 600);
-    super.setFocusable(true);
-    super.requestFocusInWindow();
-    super.add(app);
-    super.addKeyListener(new ScreenKeyListener());
-    super.addMouseListener(new ScreenMouseListener());
-    super.addMouseMotionListener(new ScreenMouseMotionListener());
-    app.start();
-  }
+	public void init()
+	{
+		super.setSize(800, 600);
+		super.add(app);
+	}
 
-  public void start()
-  {
-  }
+	public void start()
+	{
+		app.start();
+	}
 
-  public void stop()
-  {
-    app.stop();
-  }
+	public void stop()
+	{
+		app.stop();
+	}
 
-  public void destroy() {
-    app.stop();
-  }
-
-  public static Application getApp()
-  {
-    return app;
-  }
+	public void destroy() {
+		app.stop();
+	}
 }
