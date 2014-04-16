@@ -32,10 +32,11 @@ public class Screen
 		return name;
 	}
 
-	public void OnKeyEvent(String Input, Boolean pressed)
+	public void OnKeyEvent(String typed, Boolean pressed)
 	{
+		if(typed==null)return;
 		for(SubScreen ss: subScreens)
-			ss.OnKeyEvent(Input, pressed);
+			ss.OnKeyEvent(typed, pressed);
 	}
 
 	public void onClick(int x, int y)

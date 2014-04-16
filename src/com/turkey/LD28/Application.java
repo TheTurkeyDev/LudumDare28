@@ -16,19 +16,15 @@ public class Application extends Component implements Runnable
 	private Thread thread;
 	public boolean running = false;
 
-	public Application()
+	public synchronized void start()
 	{
+		ScreenManager.manager.newScreen(new BeginningScreen("BeginningScreen"));
+		ScreenManager.manager.setCurrentScreen("BeginningScreen");
 		super.setFocusable(true);
 		super.requestFocusInWindow();
 		super.addKeyListener(new ScreenKeyListener());
 		super.addMouseListener(new ScreenMouseListener());
 		super.addMouseMotionListener(new ScreenMouseMotionListener());
-	}
-
-	public synchronized void start()
-	{
-		ScreenManager.manager.newScreen(new BeginningScreen("BeginningScreen"));
-		ScreenManager.manager.setCurrentScreen("BeginningScreen");
 		new GameSettings();
 		running = true;
 		thread = new Thread(this, "Display");

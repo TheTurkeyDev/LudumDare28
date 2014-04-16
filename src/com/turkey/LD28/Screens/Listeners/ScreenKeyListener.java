@@ -38,6 +38,6 @@ public class ScreenKeyListener implements KeyListener
 		{
 			typedletter = "esc";
 		}
-		ScreenManager.manager.getCurrentScreen().OnKeyEvent(typedletter, Boolean.valueOf(true));
+		ScreenManager.manager.getCurrentScreen().OnKeyEvent(typedletter, true);
 	}
 }

@@ -40,11 +40,11 @@ public class SettingsSubScreen extends SubScreen
 	public void paint(Graphics g)
 	{
 		g.drawImage(pauseScreen, x, y, width, height, null);
-		g.setFont(new Font("Serif", 1, 32));
+		g.setFont(new Font("Serif", 1, 28));
 		g.setColor(Color.BLACK);
-		g.drawString("Movement Speed: ", 75, 315);
-		g.setFont(new Font("Serif", 1, 50));
-		g.drawString("" + speed, 325, 315);
+		g.drawString("Movement Speed: ", 110, 310);
+		g.setFont(new Font("Serif", 1, 28));
+		g.drawString("" + speed, 335, 310);
 		if(bSelected)
 		{
 			g.drawImage(backS, 300, 450, 200, 50, null);

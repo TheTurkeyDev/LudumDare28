@@ -32,7 +32,7 @@ public class SettingsScreen extends Screen
 			addUS = ImageIO.read(getClass().getResource("/PlusUnSelected.png"));
 			minusS = ImageIO.read(getClass().getResource("/MinusSelected.png"));
 			minusUS = ImageIO.read(getClass().getResource("/MinusUnSelected.png"));
-		} catch (IOException e){e.printStackTrace();}
+		} catch (IOException e){System.out.println("Missing a texture in Setting screen");}
 	}
 	
 	public void paint(Graphics g)

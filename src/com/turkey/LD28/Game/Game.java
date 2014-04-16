@@ -50,6 +50,8 @@ public class Game
 
 	public boolean cansee(Player player, ComputerPlayer cpu)
 	{
+		if(player.getLocation().getX() == 1 && player.getLocation().getY() == 1)
+			return false;
 		Location ploc = player.getAbsoluteLocation();
 		Location cloc = cpu.getAbsoluteLocation();
 		if ((ploc.getX() / 40 - cloc.getX() / 40 != 0) && (ploc.getY() / 40 - cloc.getY() / 40 != 0))

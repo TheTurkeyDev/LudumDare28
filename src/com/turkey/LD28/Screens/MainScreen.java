@@ -56,17 +56,17 @@ public class MainScreen extends Screen
 		super.update();
 	}
 
-	public void OnKeyEvent(String input, Boolean pressed)
+	public void OnKeyEvent(String typed, Boolean pressed)
 	{
 		if (pressed.booleanValue())
 		{
-			game.getPlayer().onPress(input);
+			game.getPlayer().onPress(typed);
 		}
 		else
 		{
-			game.getPlayer().onDePress(input);
+			game.getPlayer().onDePress(typed);
 		}
-		if(input.equalsIgnoreCase("esc"))
+		if(typed.equalsIgnoreCase("esc"))
 		{
 			PauseSubScreen pss = new PauseSubScreen(100, 100, 600, 400, "pause", this);
 			if(game.isPaused())
@@ -80,7 +80,7 @@ public class MainScreen extends Screen
 				displaySubScreen(pss);
 			}
 		}
-		super.OnKeyEvent(input, pressed);
+		super.OnKeyEvent(typed, pressed);
 	}
 
 	public void onClick(int x, int y)

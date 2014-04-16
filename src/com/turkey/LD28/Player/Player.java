@@ -227,8 +227,14 @@ public class Player
 		return yPlayerCord;
 	}
 
-	public Location getAbsoluteLocation() {
+	public Location getAbsoluteLocation() 
+	{
 		return new Location(xPlayerCord, yPlayerCord);
+	}
+	
+	public Location getLocation() 
+	{
+		return new Location(xPlayerCord / 40, yPlayerCord / 40);
 	}
 
 	public void setMousePos(int x, int y)

@@ -29,7 +29,7 @@ public class EndScreen extends Screen
 			restartUS = ImageIO.read(getClass().getResource("/RestartUnSelectedButton.png"));
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Missing a texture in End screen");
 		}
 	}
 

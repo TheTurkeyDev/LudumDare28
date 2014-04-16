@@ -4,13 +4,16 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferInt;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
+import com.turkey.LD28.Application;
 import com.turkey.LD28.Game.GameSettings;
 
 public class BeginningScreen extends Screen
 {
+
 	Font font1 = new Font("Serif", 1, 32);
 	Font font2 = new Font("Serif", 1, 21);
 	Font font3 = new Font("Serif", 1, 12);
@@ -24,12 +27,14 @@ public class BeginningScreen extends Screen
 	String intro5 = "(resets every round), so if you get in a sticky situation you can take out a gaurd and";
 	String intro6 = "continue on your journey. How many rounds can you make it through? Try and find out.";
 	
+	private BufferedImage image = new BufferedImage(Application.WIDTH, Application.HEIGHT, BufferedImage.TYPE_INT_RGB);
+	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
+
 	SettingsScreen settings;
 
 	public BeginningScreen(String sName) 
 	{
 		super(sName);
-		settings = new SettingsScreen("Settings");
 		try
 		{
 			startS = ImageIO.read(getClass().getResource("/StartSelectedButton.png"));
@@ -38,7 +43,7 @@ public class BeginningScreen extends Screen
 			settingsUS = ImageIO.read(getClass().getResource("/SettingsUnSelectedButton.png"));
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println("Missing a texture in Beggning screen");
 		}
 	}
 
@@ -64,7 +69,7 @@ public class BeginningScreen extends Screen
 		{
 			g.drawImage(startUS, 300, 450, 200, 40, null);
 		}
-		
+
 		if (seSelected)
 		{
 			g.drawImage(settingsS, 300, 500, 200, 40, null);
@@ -99,7 +104,7 @@ public class BeginningScreen extends Screen
 		{
 			stSelected = false;
 		}
-		
+
 		if ((x > 300) && (x < 500) && (y > 500) && (y < 540))
 		{
 			seSelected = true;

@@ -1,4 +1,4 @@
-package com.turkey.LD28;
+	package com.turkey.LD28;
 
 import javax.swing.JApplet;
 
