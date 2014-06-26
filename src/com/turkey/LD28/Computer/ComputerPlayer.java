@@ -44,14 +44,14 @@ public class ComputerPlayer
 	public ComputerPlayer(Player playerC, Maze maze, Location loc, int moveSpeed)
 	{
 		try {
-			north = ImageIO.read(getClass().getResource("/GaurdNorth.png"));
-			east = ImageIO.read(getClass().getResource("/GaurdEast.png"));
-			west = ImageIO.read(getClass().getResource("/GaurdWest.png"));
-			south = ImageIO.read(getClass().getResource("/GaurdSouth.png"));
-			flnorth = ImageIO.read(getClass().getResource("/FlashLightNorth.png"));
-			fleast = ImageIO.read(getClass().getResource("/FlashLightEast.png"));
-			flsouth = ImageIO.read(getClass().getResource("/FlashLightSouth.png"));
-			flwest = ImageIO.read(getClass().getResource("/FlashLightWest.png"));
+			north = ImageIO.read(getClass().getResource("/Images/GaurdNorth.png"));
+			east = ImageIO.read(getClass().getResource("/Images/GaurdEast.png"));
+			west = ImageIO.read(getClass().getResource("/Images/GaurdWest.png"));
+			south = ImageIO.read(getClass().getResource("/Images/GaurdSouth.png"));
+			flnorth = ImageIO.read(getClass().getResource("/Images/FlashLightNorth.png"));
+			fleast = ImageIO.read(getClass().getResource("/Images/FlashLightEast.png"));
+			flsouth = ImageIO.read(getClass().getResource("/Images/FlashLightSouth.png"));
+			flwest = ImageIO.read(getClass().getResource("/Images/FlashLightWest.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();

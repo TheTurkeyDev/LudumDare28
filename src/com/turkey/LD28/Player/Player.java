@@ -40,10 +40,10 @@ public class Player
 		try
 		{
 			map = maze;
-			north = ImageIO.read(getClass().getResource("/NinjaNorth.png"));
-			east = ImageIO.read(getClass().getResource("/NinjaEast.png"));
-			west = ImageIO.read(getClass().getResource("/NinjaWest.png"));
-			south = ImageIO.read(getClass().getResource("/NinjaSouth.png"));
+			north = ImageIO.read(getClass().getResource("/Images/NinjaNorth.png"));
+			east = ImageIO.read(getClass().getResource("/Images/NinjaEast.png"));
+			west = ImageIO.read(getClass().getResource("/Images/NinjaWest.png"));
+			south = ImageIO.read(getClass().getResource("/Images/NinjaSouth.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();

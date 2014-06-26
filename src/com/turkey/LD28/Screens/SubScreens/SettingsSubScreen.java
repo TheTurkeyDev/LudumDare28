@@ -27,13 +27,13 @@ public class SettingsSubScreen extends SubScreen
 		speed = GameSettings.getSettings().getSpeed();
 		try
 		{
-			backS = ImageIO.read(getClass().getResource("/BackSelectedButton.png"));
-			backUS = ImageIO.read(getClass().getResource("/BackUnSelectedButton.png"));
-			addS = ImageIO.read(getClass().getResource("/PlusSelected.png"));
-			addUS = ImageIO.read(getClass().getResource("/PlusUnSelected.png"));
-			minusS = ImageIO.read(getClass().getResource("/MinusSelected.png"));
-			minusUS = ImageIO.read(getClass().getResource("/MinusUnSelected.png"));
-			pauseScreen = ImageIO.read(getClass().getResource("/PauseScreen.png"));
+			backS = ImageIO.read(getClass().getResource("/Images/BackSelectedButton.png"));
+			backUS = ImageIO.read(getClass().getResource("/Images/BackUnSelectedButton.png"));
+			addS = ImageIO.read(getClass().getResource("/Images/PlusSelected.png"));
+			addUS = ImageIO.read(getClass().getResource("/Images/PlusUnSelected.png"));
+			minusS = ImageIO.read(getClass().getResource("/Images/MinusSelected.png"));
+			minusUS = ImageIO.read(getClass().getResource("/Images/MinusUnSelected.png"));
+			pauseScreen = ImageIO.read(getClass().getResource("/Images/PauseScreen.png"));
 		} catch (IOException e){e.printStackTrace();}
 	}
 	

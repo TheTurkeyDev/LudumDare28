@@ -25,8 +25,8 @@ public class EndScreen extends Screen
 		rounds = Game.instance().getRound();
 		try
 		{
-			restartS = ImageIO.read(getClass().getResource("/RestartSelectedButton.png"));
-			restartUS = ImageIO.read(getClass().getResource("/RestartUnSelectedButton.png"));
+			restartS = ImageIO.read(getClass().getResource("/Images/RestartSelectedButton.png"));
+			restartUS = ImageIO.read(getClass().getResource("/Images/RestartUnSelectedButton.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Missing a texture in End screen");

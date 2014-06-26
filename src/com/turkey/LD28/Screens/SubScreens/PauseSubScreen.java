@@ -21,15 +21,15 @@ public class PauseSubScreen extends SubScreen
 		super(xloc, yloc, w, h, n, parent);
 		try
 		{
-			pauseScreen = ImageIO.read(getClass().getResource("/PauseScreen.png"));
-			settingsS = ImageIO.read(getClass().getResource("/SettingsSelectedButton.png"));
-			settingsUS = ImageIO.read(getClass().getResource("/SettingsUnSelectedButton.png"));
-			backS = ImageIO.read(getClass().getResource("/BackSelectedButton.png"));
-			backUS = ImageIO.read(getClass().getResource("/BackUnSelectedButton.png"));
-			restartS = ImageIO.read(getClass().getResource("/RestartSelectedButton.png"));
-			restartUS = ImageIO.read(getClass().getResource("/RestartUnSelectedButton.png"));
-			mainmenuS = ImageIO.read(getClass().getResource("/RTMSelectedButton.png"));
-			mainmenuUS = ImageIO.read(getClass().getResource("/RTMUnSelectedButton.png"));
+			pauseScreen = ImageIO.read(getClass().getResource("/Images/PauseScreen.png"));
+			settingsS = ImageIO.read(getClass().getResource("/Images/SettingsSelectedButton.png"));
+			settingsUS = ImageIO.read(getClass().getResource("/Images/SettingsUnSelectedButton.png"));
+			backS = ImageIO.read(getClass().getResource("/Images/BackSelectedButton.png"));
+			backUS = ImageIO.read(getClass().getResource("/Images/BackUnSelectedButton.png"));
+			restartS = ImageIO.read(getClass().getResource("/Images/RestartSelectedButton.png"));
+			restartUS = ImageIO.read(getClass().getResource("/Images/RestartUnSelectedButton.png"));
+			mainmenuS = ImageIO.read(getClass().getResource("/Images/RTMSelectedButton.png"));
+			mainmenuUS = ImageIO.read(getClass().getResource("/Images/RTMUnSelectedButton.png"));
 		} catch (IOException e){e.printStackTrace();}
 	}
 

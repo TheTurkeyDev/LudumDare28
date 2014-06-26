@@ -30,17 +30,16 @@ public class BeginningScreen extends Screen
 	private BufferedImage image = new BufferedImage(Application.WIDTH, Application.HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 
-	SettingsScreen settings;
 
 	public BeginningScreen(String sName) 
 	{
 		super(sName);
 		try
 		{
-			startS = ImageIO.read(getClass().getResource("/StartSelectedButton.png"));
-			startUS = ImageIO.read(getClass().getResource("/StartUnSelectedButton.png"));
-			settingsS = ImageIO.read(getClass().getResource("/SettingsSelectedButton.png"));
-			settingsUS = ImageIO.read(getClass().getResource("/SettingsUnSelectedButton.png"));
+			startS = ImageIO.read(getClass().getResource("/Images/StartSelectedButton.png"));
+			startUS = ImageIO.read(getClass().getResource("/Images/StartUnSelectedButton.png"));
+			settingsS = ImageIO.read(getClass().getResource("/Images/SettingsSelectedButton.png"));
+			settingsUS = ImageIO.read(getClass().getResource("/Images/SettingsUnSelectedButton.png"));
 		}
 		catch (IOException e) {
 			System.out.println("Missing a texture in Beggning screen");
@@ -89,7 +88,6 @@ public class BeginningScreen extends Screen
 		}
 		if ((x > 300) && (x < 500) && (y > 500) && (y < 540))
 		{
-			ScreenManager.manager.newScreen(settings);
 			ScreenManager.manager.setCurrentScreen("Settings");
 		}
 	}

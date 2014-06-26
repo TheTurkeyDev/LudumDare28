@@ -63,7 +63,7 @@ public class Maze
 	{
 		try
 		{
-			key = ImageIO.read(getClass().getResource("/Key.png"));
+			key = ImageIO.read(getClass().getResource("/Images/Key.png"));
 		}
 		catch (IOException e) {
 			e.printStackTrace();

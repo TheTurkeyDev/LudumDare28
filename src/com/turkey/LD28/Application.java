@@ -3,6 +3,7 @@ package com.turkey.LD28;
 import com.turkey.LD28.Game.GameSettings;
 import com.turkey.LD28.Screens.BeginningScreen;
 import com.turkey.LD28.Screens.ScreenManager;
+import com.turkey.LD28.Screens.SettingsScreen;
 import com.turkey.LD28.Screens.Listeners.ScreenKeyListener;
 import com.turkey.LD28.Screens.Listeners.ScreenMouseListener;
 import com.turkey.LD28.Screens.Listeners.ScreenMouseMotionListener;
@@ -20,6 +21,7 @@ public class Application extends Component implements Runnable
 	{
 		ScreenManager.manager.newScreen(new BeginningScreen("BeginningScreen"));
 		ScreenManager.manager.setCurrentScreen("BeginningScreen");
+		ScreenManager.manager.newScreen(new SettingsScreen("Settings"));
 		super.setFocusable(true);
 		super.requestFocusInWindow();
 		super.addKeyListener(new ScreenKeyListener());

@@ -26,12 +26,12 @@ public class SettingsScreen extends Screen
 		}catch(NullPointerException e){speed = 1;}
 		try
 		{
-			backS = ImageIO.read(getClass().getResource("/BackSelectedButton.png"));
-			backUS = ImageIO.read(getClass().getResource("/BackUnSelectedButton.png"));
-			addS = ImageIO.read(getClass().getResource("/PlusSelected.png"));
-			addUS = ImageIO.read(getClass().getResource("/PlusUnSelected.png"));
-			minusS = ImageIO.read(getClass().getResource("/MinusSelected.png"));
-			minusUS = ImageIO.read(getClass().getResource("/MinusUnSelected.png"));
+			backS = ImageIO.read(getClass().getResource("/Images/BackSelectedButton.png"));
+			backUS = ImageIO.read(getClass().getResource("/Images/BackUnSelectedButton.png"));
+			addS = ImageIO.read(getClass().getResource("/Images/PlusSelected.png"));
+			addUS = ImageIO.read(getClass().getResource("/Images/PlusUnSelected.png"));
+			minusS = ImageIO.read(getClass().getResource("/Images/MinusSelected.png"));
+			minusUS = ImageIO.read(getClass().getResource("/Images/MinusUnSelected.png"));
 		} catch (IOException e){System.out.println("Missing a texture in Setting screen");}
 	}
 	
